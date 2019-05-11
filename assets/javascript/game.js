@@ -1,7 +1,11 @@
 // $('start').on('click', function () {
 //     $('#start').remove();
-game.loadQuestion();
+//     game.presentQuestion();
+// })
 
+$(document).on('click', '.answer-button', function (e) {
+    game.clicked(e);
+})
 
 var questions = [{
     question: "In which zone does the Human race start?",
@@ -48,47 +52,80 @@ var questions = [{
 var game = {
     questions: questions,
     currentQuestion: 0,
-    timeCounter: 15,
+    timeCount: 15,
     correct: 0,
     incorrect: 0,
-    countdownTimer: function () {
-        game.timeCounter--;
-        $('#timeCounter').html(game.timeCounter);
-        if (game.timeCounter <= 0) {
-            console.log("Time's Expired");
-            game.timerExpire();
-        }
-    },
-    loadQuestion: function () {
-        timer = setInterval(game.timeCounter, 1000);
+    presentQuestion: function () {
+        timer = setInterval(game.countdownTime, 1000);
+        console.log(questions[game.currentQuestion].question);
         $('#subwrapper').html('<h2>' + questions[game.currentQuestion].question + '</h2>');
         for (var i = 0; i < questions[game.currentQuestion].answers.length; i++) {
-            $('#subwrapper').append('<button class="answer-button" id="button-'+ i +'" data-name="' + questions[game.currentQuestion].answers[i] + '">' + questions[game.currentQuestion].answers[i] + '</button>');
+            $('#subwrapper').append('<button class="answer-button" id="button-' + i + '" data-name="' + questions[game.currentQuestion].answers[i] + '">' + questions[game.currentQuestion].answers[i] + '</button>');
+            console.log(questions[game.currentQuestion].answers[i]);
         }
     },
     nextQuestion: function () {
-
+        game.timeCount = 15;
+        $('#counter').html(game.counter);
+        game.currentQuestion++;
+        game.presentQuestion();
     },
-    timerExpire: function () {
-
+    countdownTime: function () {
+        game.timeCount--;
+        $('#counter').html(game.timeCount);
+        console.log(game.timeCounter);
+        if (game.timeCount <= 0) {
+            game.timeExpire();
+        }
+    },
+    timeExpire: function () {
+        clearInterval(game.timeCount);
+        game.incorrect++;
+        $('#subwrapper').html('<h3>You took too long! The correct answer was' + questions[game.currentQuestion].correctAnswer + '</h3>');
+        if (game.currentQuestion == questions.length - 1) {
+            setTimeout(game.results, 2 * 1000);
+        } else {
+            setTimeout(game.nextQuestion, 2 * 1000);
+        }
+        console.log("Took too long");
     },
     results: function () {
 
     },
-    clicked: function () {
-
+    clicked: function (e) {
+        clearInterval(game.timeCounter);
+        if ($(e.target).data("name") == questions[game.currentQuestion].correctAnswer) {
+            game.correctAnswers();
+        } else {
+            game.incorrectAnswers();
+        }
     },
     correctAnswers: function () {
-
+        game.correct++;
+        $('#subwrapper').html('<h3>Correct!</h3>');
+        if (game.currentQuestion == questions.length - 1) {
+            setTimeout(game.results, 2 * 1000);
+        } else {
+            setTimeout(game.nextQuestion, 2 * 1000);
+        }
+        console.log("Correct");
     },
     incorrectAnswers: function () {
-
+        game.incorrect++;
+        if (game.currentQuestion == questions.length - 1) {
+            setTimeout(game.results, 2 * 1000);
+        } else {
+            setTimeout(game.nextQuestion, 2 * 1000);
+        }
+        $('#subwrapper').html('<h3>Incorrect!!</h3>');
+        console.log("Incorrect");
     },
     resetGame: function () {
 
     }
 }
 
+game.presentQuestion();
 
 // $(document).ready(function(){//I need jQuery!
 
