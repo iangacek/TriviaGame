@@ -72,21 +72,21 @@ var game = {
     },
     countdownTime: function () {
         game.timeCount--;
-        $('#counter').html(game.timeCount);
+        $('#counter').html("Time left: " + game.timeCount);
         console.log(game.timeCounter);
         if (game.timeCount <= 0) {
             game.timeExpire();
         }
     },
     timeExpire: function () {
-        clearInterval(game.timeCount);
+        setInterval(game.timeCount === 15);
         game.incorrect++;
-        $('#subwrapper').html('<h3>You took too long! The correct answer was' + questions[game.currentQuestion].correctAnswer + '</h3>');
-        if (game.currentQuestion == questions.length - 1) {
-            setTimeout(game.results, 2 * 1000);
-        } else {
-            setTimeout(game.nextQuestion, 2 * 1000);
-        }
+        // $('#subwrapper').html('<h3>You took too long! The correct answer was' + questions[game.currentQuestion].correctAnswer + '</h3>');
+        // if (game.currentQuestion == questions.length - 1) {
+        //     setTimeout(game.results, 2 * 1000);
+        // } else {
+        //     setTimeout(game.nextQuestion, 2 * 1000);
+        // }
         console.log("Took too long");
     },
     results: function () {
@@ -128,47 +128,3 @@ var game = {
 }
 
 game.presentQuestion();
-
-// $(document).ready(function(){//I need jQuery!
-
-//     var questions = [{
-//         question:"What color is the background?",
-//         a:"red"
-//         b:"blue"
-//         c:"purple"
-//     }]
-
-//     var generateQuestion = function(obj){
-
-//         // We want to get here:
-//         // <form>
-//         // <h2> question1: </h2>
-
-//         var form = $("<form>");
-//         var question = $('<h2>').text(obj.question);
-//         var aDiv = $('<div>');
-//         var bDiv = $('<div>');
-//         var cDiv = $('<div>');
-//         var a = $('<input type="radio">').attr('name', obj.name);
-//         aDiv.append(a);
-//         aDiv.append(obj.a);
-//         var a = $('<input type="radio">').attr('name', obj.name);
-//         bDiv.append(b);
-//         bDiv.append(obj.b);
-//         var a = $('<input type="radio">').attr('name', obj.name);
-//         cDiv.append(c);
-//         cDiv.append(obj.c);
-
-//         if(obj.correct === "a"){
-//             a.attr('correct', "true");
-//         } else if (obj.correct)
-
-//         form.append(question);
-//         form.append(aDiv);
-//         form.append(bDiv);
-//         form.append(cDiv);
-
-//         $('questions').append(form);
-//     }
-
-// })
