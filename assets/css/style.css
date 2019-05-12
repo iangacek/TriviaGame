@@ -1,5 +1,8 @@
 html{
-    background-color: pink;
+    background-color: black;
 }
 
-.main-content
+#wrapper {
+    background-color: black;
+    color: white;
+}
