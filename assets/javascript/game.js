@@ -67,27 +67,29 @@ var game = {
     nextQuestion: function () {
         game.timeCount = 15;
         $('#counter').html(game.counter);
+        clearInterval(timer);
         game.currentQuestion++;
         game.presentQuestion();
     },
     countdownTime: function () {
         game.timeCount--;
         $('#counter').html("Time left: " + game.timeCount);
-        console.log(game.timeCounter);
+        console.log(game.timeCount);
         if (game.timeCount <= 0) {
             game.timeExpire();
         }
     },
     timeExpire: function () {
-        setInterval(game.timeCount === 15);
+        clearInterval(timer);
         game.incorrect++;
-        // $('#subwrapper').html('<h3>You took too long! The correct answer was' + questions[game.currentQuestion].correctAnswer + '</h3>');
-        // if (game.currentQuestion == questions.length - 1) {
-        //     setTimeout(game.results, 2 * 1000);
-        // } else {
-        //     setTimeout(game.nextQuestion, 2 * 1000);
-        // }
+        $('#subwrapper').html('<h3>You took too long! The correct answer was ' + questions[game.currentQuestion].correctAnswer + '</h3>');
+        if (game.currentQuestion == questions.length - 1) {
+            setTimeout(game.results, 2 * 1000);
+        } else {
+            setTimeout(game.nextQuestion, 2 * 1000);
+        }
         console.log("Took too long");
+
     },
     results: function () {
         $('#subwrapper').html("<h3>Game completed!</h3>");
@@ -95,7 +97,7 @@ var game = {
         $('#subwrapper').append("<h4>Incorrect Answers: " + game.incorrect + "</h4>");
     },
     clicked: function (e) {
-        clearInterval(game.timeCounter);
+        clearInterval(game.timeCount);
         if ($(e.target).data("name") == questions[game.currentQuestion].correctAnswer) {
             game.correctAnswers();
         } else {
