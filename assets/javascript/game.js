@@ -90,7 +90,9 @@ var game = {
         console.log("Took too long");
     },
     results: function () {
-
+        $('#subwrapper').html("<h3>Game completed!</h3>");
+        $('#subwrapper').append("<h4>Correct Answers: " + game.correct + "</h3>");
+        $('#subwrapper').append("<h4>Incorrect Answers: " + game.incorrect + "</h4>");
     },
     clicked: function (e) {
         clearInterval(game.timeCounter);
