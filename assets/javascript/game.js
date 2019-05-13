@@ -91,11 +91,6 @@ var game = {
         console.log("Took too long");
 
     },
-    results: function () {
-        $('#buttons').html("<h3>Game completed!</h3>");
-        $('#buttons').append("<h4>Correct Answers: " + game.correct + "</h3>");
-        $('#buttons').append("<h4>Incorrect Answers: " + game.incorrect + "</h4>");
-    },
     clicked: function (e) {
         clearInterval(game.timeCount);
         if ($(e.target).data("name") == questions[game.currentQuestion].correctAnswer) {
@@ -124,9 +119,11 @@ var game = {
         $('#buttons').html('<h3>Incorrect!!</h3>');
         console.log("Incorrect");
     },
-    resetGame: function () {
-
-    }
+    results: function () {
+        $('#buttons').html("<h3>Game completed!</h3>");
+        $('#buttons').append("<h4>Correct Answers: " + game.correct + "</h3>");
+        $('#buttons').append("<h4>Incorrect Answers: " + game.incorrect + "</h4>");
+    },
 }
 
 game.presentQuestion();
