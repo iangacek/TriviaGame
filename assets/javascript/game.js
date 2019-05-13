@@ -1,9 +1,9 @@
-$('start').on('click', function () {
-    $('#start').remove();
-    game.presentQuestion();
-})
+// $('start').on('click', function () {
+//     $('#start').remove();
+//     game.presentQuestion();
+// })
 
-$(document).on('click', 'btn btn-primary', function (e) {
+$(document).on('click', '.answer-button', function (e) {
     game.clicked(e);
 })
 
@@ -58,10 +58,9 @@ var game = {
     presentQuestion: function () {
         timer = setInterval(game.countdownTime, 1000);
         console.log(questions[game.currentQuestion].question);
-        $('#buttons').html('<h2 id="questionText">' + questions[game.currentQuestion].question + '</h2>');
+        $('#buttons').html('<h2>' + questions[game.currentQuestion].question + '</h2>');
         for (var i = 0; i < questions[game.currentQuestion].answers.length; i++) {
-            $('#buttons').append('<button class="btn btn-primary" id="button-' + i + '" data-name="' + questions[game.currentQuestion].answers[i] + '">' 
-            + questions[game.currentQuestion].answers[i] + '</button>');
+            $('#buttons').append('<button class="answer-button" id="button-' + i + '" data-name="' + questions[game.currentQuestion].answers[i] + '">' + questions[game.currentQuestion].answers[i] + '</button>');
             console.log(questions[game.currentQuestion].answers[i]);
         }
     },
