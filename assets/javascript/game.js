@@ -58,7 +58,7 @@ var game = {
     presentQuestion: function () {
         timer = setInterval(game.countdownTime, 1000);
         console.log(questions[game.currentQuestion].question);
-        $('#buttons').html('<h2>' + questions[game.currentQuestion].question + '</h2>');
+        $('#buttons').html('<h2 id="questionText">' + questions[game.currentQuestion].question + '</h2>');
         for (var i = 0; i < questions[game.currentQuestion].answers.length; i++) {
             $('#buttons').append('<button class="btn btn-primary" id="button-' + i + '" data-name="' + questions[game.currentQuestion].answers[i] + '">' + questions[game.currentQuestion].answers[i] + '</button>');
             console.log(questions[game.currentQuestion].answers[i]);
@@ -82,7 +82,7 @@ var game = {
     timeExpire: function () {
         clearInterval(timer);
         game.incorrect++;
-        $('#buttons').html('<h3>You took too long! The correct answer was ' + questions[game.currentQuestion].correctAnswer + '</h3>');
+        $('#buttons').html('<h3 id="oopsText">You took too long! The correct answer was ' + questions[game.currentQuestion].correctAnswer + '</h3>');
         if (game.currentQuestion == questions.length - 1) {
             setTimeout(game.results, 2 * 1000);
         } else {
@@ -123,6 +123,16 @@ var game = {
         $('#buttons').html("<h3>Game completed!</h3>");
         $('#buttons').append("<h4>Correct Answers: " + game.correct + "</h3>");
         $('#buttons').append("<h4>Incorrect Answers: " + game.incorrect + "</h4>");
+        $('#buttons').append("<h6>Answer for Question 1: Elwynn Forest </h6>");
+        $('#buttons').append("<h6>Answer for Question 2: Majordomo Executus</h6>");
+        $('#buttons').append("<h6>Answer for Question 3: 1000 gold</h6>");
+        $('#buttons').append("<h6>Answer for Question 4: Neltharion the Earth-Warder</h6>");
+        $('#buttons').append("<h6>Answer for Question 5: Alterac</h6>");
+        $('#buttons').append("<h6>Answer for Question 6: Frostmourne</h6>");
+        $('#buttons').append("<h6>Answer for Question 7: The Betrayer</h6>");
+        $('#buttons').append("<h6>Answer for Question 8: Warchief Sylvanas Windrunner</h6>");
+        $('#buttons').append("<h6>Answer for Question 9: Anduin Wrynn</h6>");
+        $('#buttons').append("<h6>Answer for Question 10: Antonidas</h6>");
     },
 }
 
