@@ -39,7 +39,7 @@ var questions = [{
     answers: ["Jaine Proudmoore", "Muradin Bronzebeard", "Anduin Wrynn", "Varian Wrynn"],
     correctAnswer: "Anduin Wrynn",
 }, {
-    question: "Who was Jaina Proudmoore's Mentor?",
+    question: "Who was Jaina Proudmoore's mentor?",
     answers: ["Herself", "Antonidas", "Khadgar", "Medivh"],
     correctAnswer: "Antonidas",
 }, {
@@ -100,7 +100,7 @@ var game = {
     },
     correctAnswers: function () {
         game.correct++;
-        $('#buttons').html('<h3 id="answerText">Correct!</h3>');
+        $('#buttons').html('<h3 id="answerText">Correct! :)</h3>');
         if (game.currentQuestion == questions.length - 1) {
             setTimeout(game.results, 2 * 1000);
         } else {
@@ -115,7 +115,7 @@ var game = {
         } else {
             setTimeout(game.nextQuestion, 2 * 1000);
         }
-        $('#buttons').html('<h3 id="answerText">Incorrect!!</h3>');
+        $('#buttons').html('<h3 id="answerText">Incorrect! :(</h3>');
         console.log("Incorrect");
     },
     results: function () {
