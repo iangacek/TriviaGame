@@ -47,6 +47,10 @@ var questions = [{
     question: "Who was Jaina Proudmoore's Mentor?",
     answers: ["Herself", "Antonidas", "Khadgar", "Medivh"],
     correctAnswer: "Antonidas",
+}, {
+    question: "In the guild known as Gaia, who was the biggest Chump?",
+    answers: ["Eveyle", "Mike", "Tate", "Agito"],
+    correctAnswer: "Mike",
 }];
 
 var game = {
