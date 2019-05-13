@@ -1,9 +1,9 @@
-// $('start').on('click', function () {
-//     $('#start').remove();
-//     game.presentQuestion();
-// })
+$('start').on('click', function () {
+    $('#start').remove();
+    game.presentQuestion();
+})
 
-$(document).on('click', '.answer-button', function (e) {
+$(document).on('click', 'btn btn-primary', function (e) {
     game.clicked(e);
 })
 
@@ -58,9 +58,10 @@ var game = {
     presentQuestion: function () {
         timer = setInterval(game.countdownTime, 1000);
         console.log(questions[game.currentQuestion].question);
-        $('#subwrapper').html('<h2>' + questions[game.currentQuestion].question + '</h2>');
+        $('#buttons').html('<h2>' + questions[game.currentQuestion].question + '</h2>');
         for (var i = 0; i < questions[game.currentQuestion].answers.length; i++) {
-            $('#subwrapper').append('<button class="answer-button" id="button-' + i + '" data-name="' + questions[game.currentQuestion].answers[i] + '">' + questions[game.currentQuestion].answers[i] + '</button>');
+            $('#buttons').append('<button class="btn btn-primary" id="button-' + i + '" data-name="' + questions[game.currentQuestion].answers[i] + '">' 
+            + questions[game.currentQuestion].answers[i] + '</button>');
             console.log(questions[game.currentQuestion].answers[i]);
         }
     },
@@ -82,7 +83,7 @@ var game = {
     timeExpire: function () {
         clearInterval(timer);
         game.incorrect++;
-        $('#subwrapper').html('<h3>You took too long! The correct answer was ' + questions[game.currentQuestion].correctAnswer + '</h3>');
+        $('#buttons').html('<h3>You took too long! The correct answer was ' + questions[game.currentQuestion].correctAnswer + '</h3>');
         if (game.currentQuestion == questions.length - 1) {
             setTimeout(game.results, 2 * 1000);
         } else {
@@ -92,9 +93,9 @@ var game = {
 
     },
     results: function () {
-        $('#subwrapper').html("<h3>Game completed!</h3>");
-        $('#subwrapper').append("<h4>Correct Answers: " + game.correct + "</h3>");
-        $('#subwrapper').append("<h4>Incorrect Answers: " + game.incorrect + "</h4>");
+        $('#buttons').html("<h3>Game completed!</h3>");
+        $('#buttons').append("<h4>Correct Answers: " + game.correct + "</h3>");
+        $('#buttons').append("<h4>Incorrect Answers: " + game.incorrect + "</h4>");
     },
     clicked: function (e) {
         clearInterval(game.timeCount);
@@ -106,7 +107,7 @@ var game = {
     },
     correctAnswers: function () {
         game.correct++;
-        $('#subwrapper').html('<h3>Correct!</h3>');
+        $('#buttons').html('<h3>Correct!</h3>');
         if (game.currentQuestion == questions.length - 1) {
             setTimeout(game.results, 2 * 1000);
         } else {
@@ -121,7 +122,7 @@ var game = {
         } else {
             setTimeout(game.nextQuestion, 2 * 1000);
         }
-        $('#subwrapper').html('<h3>Incorrect!!</h3>');
+        $('#buttons').html('<h3>Incorrect!!</h3>');
         console.log("Incorrect");
     },
     resetGame: function () {
