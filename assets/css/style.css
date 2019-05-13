@@ -20,14 +20,17 @@ body {
 .btn-primary {
     opacity: .5;
     margin: 8px;
+    align-content: center;
 }
 
 #counter {
     margin: 10px;
+    text-align: center;
 }
 
 #questionText {
     margin: 7px;
+    text-align: center;
 }
 
 #oopsText {
