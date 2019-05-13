@@ -1,8 +1,3 @@
-// $('start').on('click', function () {
-//     $('#start').remove();
-//     game.presentQuestion();
-// })
-
 $(document).on('click', '.btn-primary', function (e) {
     game.clicked(e);
 })
@@ -105,7 +100,7 @@ var game = {
     },
     correctAnswers: function () {
         game.correct++;
-        $('#buttons').html('<h3>Correct!</h3>');
+        $('#buttons').html('<h3 id="answerText">Correct!</h3>');
         if (game.currentQuestion == questions.length - 1) {
             setTimeout(game.results, 2 * 1000);
         } else {
@@ -120,14 +115,14 @@ var game = {
         } else {
             setTimeout(game.nextQuestion, 2 * 1000);
         }
-        $('#buttons').html('<h3>Incorrect!!</h3>');
+        $('#buttons').html('<h3 id="answerText">Incorrect!!</h3>');
         console.log("Incorrect");
     },
     results: function () {
         $('#buttons').html("<h3>Game completed!</h3>");
         $('#buttons').append("<h4>Correct Answers: " + game.correct + "</h3>");
         $('#buttons').append("<h4>Incorrect Answers: " + game.incorrect + "</h4>");
-        $('#buttons').append("<h6>Answer for Question 1: Elwynn Forest </h6>");
+        $('#buttons').append("<h6>Answer for Question 1: Elwynn Forest</h6>");
         $('#buttons').append("<h6>Answer for Question 2: Majordomo Executus</h6>");
         $('#buttons').append("<h6>Answer for Question 3: 1000 gold</h6>");
         $('#buttons').append("<h6>Answer for Question 4: Neltharion the Earth-Warder</h6>");
@@ -137,6 +132,8 @@ var game = {
         $('#buttons').append("<h6>Answer for Question 8: Warchief Sylvanas Windrunner</h6>");
         $('#buttons').append("<h6>Answer for Question 9: Anduin Wrynn</h6>");
         $('#buttons').append("<h6>Answer for Question 10: Antonidas</h6>");
+        $('#buttons').append("<h6>Answer for Question 11: Mike</h6>");
+        clearInterval(game.timeCount);
     },
 }
 
