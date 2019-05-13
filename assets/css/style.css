@@ -3,6 +3,12 @@ body {
     color: white;
 }
 
+#logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .title {
     text-align: center;
 }
