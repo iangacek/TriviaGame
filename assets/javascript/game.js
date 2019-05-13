@@ -60,7 +60,7 @@ var game = {
         console.log(questions[game.currentQuestion].question);
         $('#buttons').html('<h2>' + questions[game.currentQuestion].question + '</h2>');
         for (var i = 0; i < questions[game.currentQuestion].answers.length; i++) {
-            $('#buttons').append('<button class="btn-primary" id="button-' + i + '" data-name="' + questions[game.currentQuestion].answers[i] + '">' + questions[game.currentQuestion].answers[i] + '</button>');
+            $('#buttons').append('<button class="btn btn-primary" id="button-' + i + '" data-name="' + questions[game.currentQuestion].answers[i] + '">' + questions[game.currentQuestion].answers[i] + '</button>');
             console.log(questions[game.currentQuestion].answers[i]);
         }
     },
